@@ -265,6 +265,50 @@ $.extend(true, systemDictionary, {
         en: 'OFF text color',
         de: 'OFF Textfarbe',
     },
+    menuBackgroundMode: {
+        en: 'Menu background mode',
+        de: 'Menue Hintergrund-Modus',
+    },
+    menuColor1: {
+        en: 'Menu color 1',
+        de: 'Menue Farbe 1',
+    },
+    menuColor2: {
+        en: 'Menu color 2',
+        de: 'Menue Farbe 2',
+    },
+    menuGradientDirection: {
+        en: 'Menu gradient direction',
+        de: 'Menue Verlauf Richtung',
+    },
+    menuOpacity: {
+        en: 'Menu transparency',
+        de: 'Menue Transparenz',
+    },
+    menuBorderColor: {
+        en: 'Menu border color',
+        de: 'Menue Rand Farbe',
+    },
+    menuTextColor: {
+        en: 'Menu text color',
+        de: 'Menue Textfarbe',
+    },
+    menuFontSize: {
+        en: 'Menu font size',
+        de: 'Menue Schriftgroesse',
+    },
+    menuItemBackgroundColor: {
+        en: 'Menu item background',
+        de: 'Menue Eintrag Hintergrund',
+    },
+    menuItemHoverBackgroundColor: {
+        en: 'Menu item hover background',
+        de: 'Menue Hover Hintergrund',
+    },
+    menuItemHoverTextColor: {
+        en: 'Menu item hover text color',
+        de: 'Menue Hover Textfarbe',
+    },
     color: {
         en: 'Color',
         de: 'Farbe',
@@ -280,7 +324,7 @@ $.extend(true, systemDictionary, {
 });
 
 vis.binds.proxmox = {
-    version: '0.4.12',
+    version: '0.4.13',
     instanceSelector: function (widAttr) {
         var values = [];
         var seen = {};
@@ -395,6 +439,17 @@ vis.binds.proxmox = {
             statusOffBg: data.statusOffBg || 'rgba(255,95,87,0.28)',
             statusOffText: data.statusOffText || '#ffe2df',
             statusFontSize: vis.binds.proxmox.readPixelSize(data.statusFontSize, 10),
+            menuBackgroundMode: vis.binds.proxmox.normalizeBackgroundMode(data.menuBackgroundMode),
+            menuColor1: data.menuColor1 || '#101a2b',
+            menuColor2: data.menuColor2 || '#162338',
+            menuGradientDirection: data.menuGradientDirection || '180deg',
+            menuOpacity: vis.binds.proxmox.readPercent(data.menuOpacity, 0),
+            menuBorderColor: data.menuBorderColor || 'rgba(255,255,255,0.12)',
+            menuTextColor: data.menuTextColor || '#eef4ff',
+            menuFontSize: vis.binds.proxmox.readPixelSize(data.menuFontSize, 13),
+            menuItemBackgroundColor: data.menuItemBackgroundColor || 'rgba(255,255,255,0.06)',
+            menuItemHoverBackgroundColor: data.menuItemHoverBackgroundColor || 'rgba(75,163,255,0.20)',
+            menuItemHoverTextColor: data.menuItemHoverTextColor || '#eef4ff',
             warnCpu: parseFloat(data.warnCpu) || 85,
             warnMemory: parseFloat(data.warnMemory) || 90,
             warnDisk: parseFloat(data.warnDisk) || 90,
@@ -631,7 +686,7 @@ vis.binds.proxmox = {
     },
     applyTheme: function ($widget, settings) {
         var widgetOpacity = vis.binds.proxmox.transparencyToOpacity(settings.widgetOpacity);
-        var opacity = vis.binds.proxmox.transparencyToOpacity(settings.cardOpacity);
+        var cardOpacity = vis.binds.proxmox.transparencyToOpacity(settings.cardOpacity);
         var accentRun = vis.binds.proxmox.toSolidColor(settings.statusRunBg, '#37d67a');
         var accentWarn = vis.binds.proxmox.toSolidColor(settings.statusWarnBg, '#ff9f1a');
         var accentOff = vis.binds.proxmox.toSolidColor(settings.statusOffBg, '#ff5f57');
@@ -665,7 +720,7 @@ vis.binds.proxmox = {
         style.setProperty('--proxmox-message-size', settings.messageFontSize);
         style.setProperty('--proxmox-status-size', settings.statusFontSize);
         style.setProperty('--proxmox-chip-size', settings.chipFontSize);
-        style.setProperty('--proxmox-card-bg', vis.binds.proxmox.buildCardBackground(settings, opacity));
+        style.setProperty('--proxmox-card-bg', vis.binds.proxmox.buildCardBackground(settings, cardOpacity));
         style.setProperty('--proxmox-card-radius', settings.cardRadius);
         style.setProperty('--proxmox-card-padding', settings.cardPadding);
         style.setProperty('--proxmox-card-shadow', vis.binds.proxmox.buildShadow(settings.cardShadow));
@@ -682,6 +737,31 @@ vis.binds.proxmox = {
         style.setProperty('--proxmox-accent-run', accentRun);
         style.setProperty('--proxmox-accent-warn', accentWarn);
         style.setProperty('--proxmox-accent-off', accentOff);
+    },
+    applyMenuTheme: function ($menu, settings) {
+        var element = $menu && $menu[0];
+        var style;
+        var menuOpacity;
+
+        if (!element) {
+            return;
+        }
+
+        menuOpacity = vis.binds.proxmox.transparencyToOpacity(settings.menuOpacity);
+        style = element.style;
+        style.setProperty('--proxmox-menu-bg', vis.binds.proxmox.buildSurfaceBackground(
+            settings.menuBackgroundMode,
+            settings.menuColor1,
+            settings.menuColor2,
+            settings.menuGradientDirection,
+            menuOpacity
+        ));
+        style.setProperty('--proxmox-menu-border-color', settings.menuBorderColor);
+        style.setProperty('--proxmox-menu-text-color', settings.menuTextColor);
+        style.setProperty('--proxmox-menu-font-size', settings.menuFontSize);
+        style.setProperty('--proxmox-menu-item-bg', settings.menuItemBackgroundColor);
+        style.setProperty('--proxmox-menu-item-hover-bg', settings.menuItemHoverBackgroundColor);
+        style.setProperty('--proxmox-menu-item-hover-text', settings.menuItemHoverTextColor);
     },
     buildSurfaceBackground: function (mode, color1, color2, direction, opacity) {
         if (mode === 'transparent') {
@@ -1273,6 +1353,8 @@ vis.binds.proxmox = {
         vis.binds.proxmox.closeFloatingMenu();
 
         var $menu = $('<div class="proxmox-floating-menu"></div>');
+        var widgetState = $widget.data('proxmoxState');
+        var settings = widgetState && widgetState.settings ? widgetState.settings : null;
         var triggerRect = $trigger[0].getBoundingClientRect();
         var widgetRect = $widget[0].getBoundingClientRect();
         var viewportWidth = window.innerWidth;
@@ -1302,6 +1384,10 @@ vis.binds.proxmox = {
                 })
                 .appendTo($menu);
         });
+
+        if (settings) {
+            vis.binds.proxmox.applyMenuTheme($menu, settings);
+        }
 
         $menu.css({
             left: Math.round(left) + 'px',

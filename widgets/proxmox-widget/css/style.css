@@ -226,6 +226,13 @@
 }
 
 .proxmox-floating-menu {
+    --proxmox-menu-bg: rgba(12, 20, 34, 0.99);
+    --proxmox-menu-border-color: rgba(255, 255, 255, 0.12);
+    --proxmox-menu-text-color: #eef4ff;
+    --proxmox-menu-font-size: 13px;
+    --proxmox-menu-item-bg: rgba(255, 255, 255, 0.06);
+    --proxmox-menu-item-hover-bg: rgba(75, 163, 255, 0.2);
+    --proxmox-menu-item-hover-text: #eef4ff;
     position: fixed;
     z-index: 99999;
     display: grid;
@@ -233,8 +240,8 @@
     min-width: 176px;
     padding: 8px;
     border-radius: 12px;
-    background: rgba(12, 20, 34, 0.99);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: var(--proxmox-menu-bg);
+    border: 1px solid var(--proxmox-menu-border-color);
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.42);
 }
 
@@ -243,14 +250,15 @@
     padding: 8px 10px;
     border: 0;
     border-radius: 9px;
-    background: rgba(255, 255, 255, 0.06);
-    color: #eef4ff;
+    background: var(--proxmox-menu-item-bg);
+    color: var(--proxmox-menu-text-color);
     cursor: pointer;
     text-align: left;
-    font-size: 13px;
+    font-size: var(--proxmox-menu-font-size);
     line-height: 1.2;
 }
 
 .proxmox-floating-menu__item:hover {
-    background: rgba(75, 163, 255, 0.2);
+    background: var(--proxmox-menu-item-hover-bg);
+    color: var(--proxmox-menu-item-hover-text);
 }

@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "vis-proxmox-widget",
-    "version": "0.1.17",
+    "version": "0.1.18",
     "news": {
+      "0.1.18": {
+        "en": "Added configurable submenu styling for the VM and container action menu, including background, text and hover colors.",
+        "de": "Konfigurierbares Untermenue-Styling fuer das VM- und Container-Aktionsmenue hinzugefuegt, inklusive Hintergrund-, Text- und Hover-Farben."
+      },
       "0.1.17": {
         "en": "Added radius, card shadow and card padding controls for easier visual fine-tuning.",
         "de": "Radius-, Kachel-Schatten- und Kachel-Innenabstand-Regler fuer bequemeres visuelles Feintuning hinzugefuegt."
