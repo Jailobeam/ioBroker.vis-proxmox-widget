@@ -1,0 +1,256 @@
+.proxmox-widget {
+    --proxmox-widget-bg: linear-gradient(180deg, rgba(9, 18, 32, 0.96), rgba(15, 28, 48, 0.92));
+    --proxmox-widget-radius: 14px;
+    --proxmox-title-color: #eef4ff;
+    --proxmox-summary-color: #c8d7ef;
+    --proxmox-name-color: #eef4ff;
+    --proxmox-meta-color: #9db2cf;
+    --proxmox-detail-color: #9db2cf;
+    --proxmox-message-color: #9db2cf;
+    --proxmox-title-size: 16px;
+    --proxmox-summary-size: 13px;
+    --proxmox-name-size: 13px;
+    --proxmox-meta-size: 11px;
+    --proxmox-detail-size: 11px;
+    --proxmox-message-size: 12px;
+    --proxmox-status-size: 10px;
+    --proxmox-chip-size: 10px;
+    --proxmox-card-bg: rgba(255, 255, 255, 0.05);
+    --proxmox-card-radius: 12px;
+    --proxmox-card-padding: 10px;
+    --proxmox-card-shadow: none;
+    --proxmox-card-border-color: rgba(255, 255, 255, 0.08);
+    --proxmox-chip-bg: rgba(24, 124, 205, 0.16);
+    --proxmox-chip-border-color: rgba(255, 255, 255, 0);
+    --proxmox-chip-text-color: #d8e7ff;
+    --proxmox-status-run-bg: rgba(55, 214, 122, 0.16);
+    --proxmox-status-run-text: #dff3ff;
+    --proxmox-status-warn-bg: rgba(255, 159, 26, 0.28);
+    --proxmox-status-warn-text: #fff1cf;
+    --proxmox-status-off-bg: rgba(255, 95, 87, 0.28);
+    --proxmox-status-off-text: #ffe2df;
+    --proxmox-accent-run: #37d67a;
+    --proxmox-accent-warn: #ff9f1a;
+    --proxmox-accent-off: #ff5f57;
+    --proxmox-accent-storage: #4ba3ff;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    border-radius: var(--proxmox-widget-radius);
+    background: var(--proxmox-widget-bg);
+    color: #eef4ff;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    transform-origin: top left;
+}
+
+.proxmox-widget__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.proxmox-widget__title {
+    font-size: var(--proxmox-title-size);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    color: var(--proxmox-title-color);
+}
+
+.proxmox-widget__summary {
+    font-size: var(--proxmox-summary-size);
+    font-weight: 700;
+    color: var(--proxmox-summary-color);
+    white-space: nowrap;
+}
+
+.proxmox-widget__body {
+    display: grid;
+    gap: 8px;
+}
+
+.proxmox-widget__empty {
+    display: grid;
+    place-items: center;
+    min-height: 80px;
+    border: 1px dashed rgba(157, 178, 207, 0.28);
+    border-radius: 12px;
+    color: var(--proxmox-message-color);
+    background: rgba(255, 255, 255, 0.03);
+    font-size: var(--proxmox-message-size);
+}
+
+.proxmox-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-height: 0;
+    padding: var(--proxmox-card-padding);
+    border: 1px solid var(--proxmox-card-border-color);
+    border-radius: var(--proxmox-card-radius);
+    background: var(--proxmox-card-bg);
+    box-shadow: var(--proxmox-card-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.proxmox-card--running {
+    border-left: 4px solid var(--proxmox-accent-run);
+}
+
+.proxmox-card--stopped {
+    border-left: 4px solid var(--proxmox-accent-off);
+    opacity: 0.95;
+}
+
+.proxmox-card--warning {
+    border-left: 4px solid var(--proxmox-accent-warn);
+    box-shadow: var(--proxmox-card-shadow), 0 0 0 1px rgba(255, 159, 26, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.proxmox-card--storage {
+    border-left: 4px solid var(--proxmox-accent-storage);
+}
+
+.proxmox-card__top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.proxmox-card__name {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: var(--proxmox-name-size);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--proxmox-name-color);
+}
+
+.proxmox-card__status {
+    flex: 0 0 auto;
+    padding: 2px 7px;
+    border-radius: 999px;
+    font-size: var(--proxmox-status-size);
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--proxmox-status-run-text);
+    background: var(--proxmox-status-run-bg);
+}
+
+.proxmox-card__status--warning {
+    background: var(--proxmox-status-warn-bg);
+    color: var(--proxmox-status-warn-text);
+}
+
+.proxmox-card__status--muted {
+    background: var(--proxmox-status-off-bg);
+    color: var(--proxmox-status-off-text);
+}
+
+.proxmox-card__meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-width: 0;
+}
+
+.proxmox-card__meta,
+.proxmox-card__details,
+.proxmox-card__uptime {
+    font-size: var(--proxmox-meta-size);
+    line-height: 1.2;
+    color: var(--proxmox-meta-color);
+}
+
+.proxmox-card__meta,
+.proxmox-card__uptime {
+    min-width: 0;
+}
+
+.proxmox-card__uptime {
+    flex: 0 0 auto;
+    margin-left: auto;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.proxmox-card__details {
+    font-size: var(--proxmox-detail-size);
+    color: var(--proxmox-detail-color);
+}
+
+.proxmox-card__meta-row--empty {
+    display: none;
+}
+
+.proxmox-card__metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.proxmox-chip {
+    padding: 3px 7px;
+    border-radius: 999px;
+    border: 1px solid var(--proxmox-chip-border-color);
+    background: var(--proxmox-chip-bg);
+    color: var(--proxmox-chip-text-color);
+    font-size: var(--proxmox-chip-size);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.proxmox-card__actions {
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.proxmox-card__actions--busy {
+    opacity: 0.7;
+}
+
+.proxmox-card__action-trigger {
+    min-width: 34px;
+    padding: 4px 9px;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #d8e7ff;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.proxmox-floating-menu {
+    position: fixed;
+    z-index: 99999;
+    display: grid;
+    gap: 6px;
+    min-width: 176px;
+    padding: 8px;
+    border-radius: 12px;
+    background: rgba(12, 20, 34, 0.99);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.42);
+}
+
+.proxmox-floating-menu__item {
+    min-height: 36px;
+    padding: 8px 10px;
+    border: 0;
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.06);
+    color: #eef4ff;
+    cursor: pointer;
+    text-align: left;
+    font-size: 13px;
+    line-height: 1.2;
+}
+
+.proxmox-floating-menu__item:hover {
+    background: rgba(75, 163, 255, 0.2);
+}

@@ -1,0 +1,38 @@
+{
+  "name": "iobroker.vis-proxmox-widget",
+  "version": "0.1.17",
+  "description": "Proxmox widgets for ioBroker.vis",
+  "author": "Jailobeam",
+  "homepage": "https://github.com/Jailobeam/ioBroker.vis-proxmox-widget",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jailobeam/ioBroker.vis-proxmox-widget.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Jailobeam/ioBroker.vis-proxmox-widget/issues"
+  },
+  "keywords": [
+    "ioBroker",
+    "vis",
+    "proxmox",
+    "widget",
+    "visualization",
+    "smart home"
+  ],
+  "main": "main.js",
+  "files": [
+    "admin/",
+    "main.js",
+    "widgets/",
+    "io-package.json",
+    "LICENSE",
+    "README.md"
+  ],
+  "dependencies": {
+    "@iobroker/adapter-core": "^3.1.6"
+  },
+  "scripts": {
+    "check": "node --check widgets/proxmox-widget/js/proxmox.js"
+  }
+}

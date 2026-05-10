@@ -1,0 +1,118 @@
+{
+  "common": {
+    "name": "vis-proxmox-widget",
+    "version": "0.1.17",
+    "news": {
+      "0.1.17": {
+        "en": "Added radius, card shadow and card padding controls for easier visual fine-tuning.",
+        "de": "Radius-, Kachel-Schatten- und Kachel-Innenabstand-Regler fuer bequemeres visuelles Feintuning hinzugefuegt."
+      },
+      "0.1.15": {
+        "en": "Reversed transparency behavior and added font size settings for all configurable text areas.",
+        "de": "Transparenzverhalten umgedreht und Schriftgroessen fuer alle konfigurierbaren Textbereiche hinzugefuegt."
+      },
+      "0.1.14": {
+        "en": "Added widget background settings with color, gradient and transparent modes.",
+        "de": "Widget-Hintergrund-Einstellungen mit Farbe, Farbverlauf und Transparent-Modus hinzugefuegt."
+      },
+      "0.1.13": {
+        "en": "Fixed theme application for VIS color settings and re-enabled VIS restart after install/update.",
+        "de": "Theme-Anwendung fuer VIS-Farbeinstellungen korrigiert und VIS-Neustart nach Installation/Update wieder aktiviert."
+      },
+      "0.1.12": {
+        "en": "Fixed card color mode handling and moved uptime into the meta row on the right side.",
+        "de": "Behandlung des Kachel-Farbmodus korrigiert und Laufzeit rechts in die Meta-Zeile verschoben."
+      },
+      "0.1.11": {
+        "en": "Removed automatic VIS restart and added direct VIS widget sync during adapter startup to avoid install warnings.",
+        "de": "Automatischen VIS-Neustart entfernt und direkte VIS-Widget-Synchronisierung beim Adapterstart eingebaut, um Installationswarnungen zu vermeiden."
+      },
+      "0.1.10": {
+        "en": "Added visual design settings for cards, chips, text colors and status badges.",
+        "de": "Design-Einstellungen fuer Karten, Chips, Textfarben und Status-Badges hinzugefuegt."
+      },
+      "0.1.9": {
+        "en": "Aligned widget set filenames with the adapter package name so VIS imports the widget set after Git installation.",
+        "de": "Widget-Set-Dateinamen an den Paketnamen angepasst, damit VIS das Widget-Set nach Git-Installation uebernimmt."
+      },
+      "0.1.8": {
+        "en": "Renamed package to ioBroker.vis-proxmox-widget.",
+        "de": "Paket in ioBroker.vis-proxmox-widget umbenannt."
+      },
+      "0.1.7": {
+        "en": "Removed auto entry from the Proxmox instance autocomplete so only real instances are shown.",
+        "de": "Auto-Eintrag aus der Proxmox-Instanz-Autovervollstaendigung entfernt, sodass nur echte Instanzen angezeigt werden."
+      },
+      "0.1.6": {
+        "en": "Changed Proxmox instance field to a dynamic autocomplete that lists only existing Proxmox instances.",
+        "de": "Proxmox-Instanzfeld auf dynamische Autovervollstaendigung umgestellt, die nur vorhandene Proxmox-Instanzen anzeigt."
+      },
+      "0.1.5": {
+        "en": "Restored instance dropdown with auto and proxmox.0-proxmox.5 options for multi-instance setups.",
+        "de": "Instanz-Dropdown mit auto und proxmox.0 bis proxmox.5 fuer Multi-Instanz-Setups wiederhergestellt."
+      },
+      "0.1.4": {
+        "en": "Replaced static instance dropdown with auto/manual instance field and automatic single-instance detection.",
+        "de": "Statisches Instanz-Dropdown durch Auto-/Manuell-Feld ersetzt und automatische Einzelinstanz-Erkennung hinzugefuegt."
+      },
+      "0.1.3": {
+        "en": "Removed unnecessary web adapter restart during install/uninstall.",
+        "de": "Unnoetigen Neustart des Web-Adapters bei Installation/Deinstallation entfernt."
+      },
+      "0.1.2": {
+        "en": "Added admin localLink and aligned adapter metadata with established VIS widget packages.",
+        "de": "Admin-Verknuepfung hinzugefuegt und Adapter-Metadaten an etablierte VIS-Widget-Pakete angepasst."
+      },
+      "0.1.1": {
+        "en": "Fixed empty Proxmox instance handling and improved fresh-install behavior.",
+        "de": "Leere Proxmox-Instanzen sauber behandelt und Verhalten nach Neuinstallation verbessert."
+      },
+      "0.1.0": {
+        "en": "Initial release with Proxmox overview widgets for VIS-1.",
+        "de": "Erste Version mit Proxmox-Uebersichts-Widgets fuer VIS-1."
+      }
+    },
+    "title": "ioBroker VIS Proxmox Widget",
+    "titleLang": {
+      "en": "ioBroker VIS Proxmox Widget",
+      "de": "ioBroker VIS Proxmox Widget"
+    },
+    "desc": {
+      "en": "Proxmox overview widgets for ioBroker.vis",
+      "de": "Proxmox-Uebersichts-Widgets fuer ioBroker.vis"
+    },
+    "platform": "Javascript/Node.js",
+    "loglevel": "info",
+    "icon": "proxmox.png",
+    "enabled": true,
+    "mode": "once",
+    "extIcon": "https://raw.githubusercontent.com/Jailobeam/ioBroker.vis-proxmox-widget/main/admin/proxmox.png",
+    "readme": "https://github.com/Jailobeam/ioBroker.vis-proxmox-widget/blob/main/README.md",
+    "authors": [
+      "Jailobeam"
+    ],
+    "license": "MIT",
+    "localLink": "%web_protocol%://%ip%:%web_port%/vis/edit.html",
+    "keywords": [
+      "proxmox",
+      "vis",
+      "widget",
+      "visualization"
+    ],
+    "type": "visualization-widgets",
+    "onlyWWW": true,
+    "singleton": true,
+    "noConfig": true,
+    "adminUI": {
+      "config": "none"
+    },
+    "restartAdapters": [
+      "vis"
+    ],
+    "dependencies": [
+      "vis"
+    ]
+  },
+  "native": {},
+  "instanceObjects": []
+}
