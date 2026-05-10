@@ -1,6 +1,6 @@
 # ioBroker.vis-proxmox-widget
 
-Installierbares Proxmox-Widget fuer `ioBroker.vis` / VIS-1.
+Installierbares Proxmox-Widget für `ioBroker.vis` / VIS-1.
 
 Das Widget liest die vorhandenen Daten aus einer installierten `proxmox.x`-Instanz und zeigt VMs, Container, Nodes und optional Storage direkt in VIS an.
 
@@ -16,7 +16,7 @@ Das Widget liest die vorhandenen Daten aus einer installierten `proxmox.x`-Insta
   - Containern
   - Nodes
   - optional Storage
-- kompakte Uebersicht mit:
+- kompakte Übersicht mit:
   - Name
   - Typ
   - VMID
@@ -40,7 +40,7 @@ Das Widget liest die vorhandenen Daten aus einer installierten `proxmox.x`-Insta
 
 ## Anzeigeoptionen
 
-- Proxmox-Instanz aus vorhandenen `proxmox.x`-Instanzen waehlen
+- Proxmox-Instanz aus vorhandenen `proxmox.x`-Instanzen wählen
 - Skalierung des gesamten Widgets
 - Anzahl Objekte pro Reihe
 - Ein- und Ausblenden von:
@@ -61,7 +61,7 @@ Das Widget liest die vorhandenen Daten aus einer installierten `proxmox.x`-Insta
   - `Prozent`
   - `Wert`
   - `Prozent und Wert`
-- Warnschwellen fuer:
+- Warnschwellen für:
   - CPU
   - RAM
   - Speicherplatz
@@ -82,11 +82,11 @@ Das Widget liest die vorhandenen Daten aus einer installierten `proxmox.x`-Insta
   - Chips
   - Texte
   - Status-Badges
-- Transparenz fuer Widget und Kacheln
-- Schriftgroessen fuer:
+- Transparenz für Widget und Kacheln
+- Schriftgrößen für:
   - Titel
   - Zusammenfassung
-  - Geraetename
+  - Gerätename
   - Meta-Text
   - Detailtext
   - Meldungen
@@ -102,7 +102,7 @@ Das Widget liest die vorhandenen Daten aus einer installierten `proxmox.x`-Insta
 
 Solange das Paket noch nicht im offiziellen ioBroker-Repository gelistet ist, kann es direkt von GitHub installiert werden.
 
-Beispiel ueber Git:
+Beispiel über Git:
 
 ```bash
 iob add https://github.com/Jailobeam/ioBroker.vis-proxmox-widget
@@ -116,12 +116,12 @@ iob add https://github.com/Jailobeam/ioBroker.vis-proxmox-widget#v0.1.17
 
 ## Nach der Installation
 
-1. VIS-Editor neu oeffnen
+1. VIS-Editor neu öffnen
 2. Browser einmal mit `Strg+F5` neu laden
 3. In der Widget-Auswahl das Set `proxmox-widget` bzw. `Proxmox Overview` verwenden
 
 Hinweis:
-Der Adapter startet `vis` nach Installation oder Update neu, damit die Widget-Dateien in VIS uebernommen werden.
+Der Adapter startet `vis` nach Installation oder Update neu, damit die Widget-Dateien in VIS übernommen werden.
 
 ## Voraussetzungen
 
@@ -130,10 +130,10 @@ Der Adapter startet `vis` nach Installation oder Update neu, damit die Widget-Da
 
 ## Wichtige Hinweise
 
-- Dieses Paket ist fuer VIS-1 gebaut, nicht fuer VIS-2.
+- Dieses Paket ist für VIS-1 gebaut, nicht für VIS-2.
 - Die Instanzauswahl zeigt nur vorhandene `proxmox.x`-Instanzen an.
 - Bei Popup-Verwendung in VIS gelten dieselben Widget-Einstellungen wie in normalen Views.
-- Fuer eine spaetere Aufnahme ins offizielle ioBroker-Repository sind zusaetzlich npm-Publish und Repository-Eintrag noetig.
+- Für eine spätere Aufnahme ins offizielle ioBroker-Repository sind zusätzlich npm-Publish und Repository-Eintrag nötig.
 
 ## Lizenz
 
